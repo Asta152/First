@@ -1,7 +1,21 @@
 package com.example.demo.books;
 
-public class Bok {
-    private int id;
+import jakarta.persistence.*;
+@Entity
+@Table
+public class Bok{
+    @Id
+    @SequenceGenerator(
+            name = "books",
+            sequenceName = "books",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "books"
+    )
+
+    private Long id;
     private String name;
     private int pages;
     private float price;
@@ -9,7 +23,7 @@ public class Bok {
     public Bok(){
 
     }
-    public Bok(int id, String name, int pages, float price, String author){
+    public Bok(Long id, String name, int pages, float price, String author){
             this.id = id;
             this.name = name;
             this.pages = pages;
@@ -53,11 +67,11 @@ public class Bok {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
