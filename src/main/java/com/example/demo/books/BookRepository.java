@@ -1,12 +1,22 @@
 package com.example.demo.books;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface BookRepository
 
-    extends JpaRepository<Bok, Long>{
+    extends JpaRepository<Book, Long>{
+
+    @Query("Select b From Book b WHERE b.name = ?1")
+    Optional<Book> findBookByName(String name);
+
+
+    @Query("Select x From Book x WHERE x.price < ?2 and x.price > ?1 ")
+    Optional<Book> findBookByPrice(float startPrice, float endPrice);
 
 
 

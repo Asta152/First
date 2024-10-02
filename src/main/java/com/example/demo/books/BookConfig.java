@@ -12,18 +12,16 @@ public class BookConfig {
     CommandLineRunner commandLineRunner(
             BookRepository bookRepository){
         return args -> {
-            Bok elden_lord = new Bok(
-                    1L,
+            Book elden_lord = new Book(
                     "EldenRing",
+                    29,
                     91,
-                    0,
                     "Miyazaki"
             );
-            Bok Melina = new Bok(
-                    1L,
-                    "Sigma",
+            Book Melina = new Book(
+                    "Melina",
+                    236,
                     91,
-                    0,
                     "Miyazaki"
             );
             bookRepository.saveAll(

@@ -1,15 +1,14 @@
 package com.example.demo.books;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("book_list/")
 public class BookController {
+
 
     private final BookService BookService;
 
@@ -19,7 +18,12 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Bok> bookList() {
+    public List<Book> bookList() {
         return BookService.bookList();
+        }
+
+    @PostMapping
+    public void addBook(@RequestBody Book book){
+        BookService.addBook(book);
     }
 }

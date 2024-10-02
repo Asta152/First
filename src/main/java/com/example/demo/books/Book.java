@@ -3,7 +3,7 @@ package com.example.demo.books;
 import jakarta.persistence.*;
 @Entity
 @Table
-public class Bok{
+public class Book {
     @Id
     @SequenceGenerator(
             name = "books",
@@ -20,17 +20,19 @@ public class Bok{
     private int pages;
     private float price;
     private String author;
-    public Bok(){
+    public Book(){
 
     }
-    public Bok(Long id, String name, int pages, float price, String author){
+    public Book(Long id, String name, int pages, float price, String author){
             this.id = id;
             this.name = name;
+            this.price = price;
             this.pages = pages;
             this.author = author;
     }
-    public Bok(String name, int pages, String author){
+    public Book(String name,float price, int pages, String author){
         this.name = name;
+        this.price = price;
         this.pages = pages;
         this.author = author;
     }
